@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Islomjon Group</title>
+<style>
+*
+{
+padding:0;
+margin:0;
+box-sizing:border-box;
+}
+body
+{
+display:flex;
+align-items:center;
+min-height:100vh;
+justify-content:center;
+background:#abacbc;
+}
+#all
+{
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+background:#fff;
+padding:140px;
+box-shadow:0 0 15px #999;
+border-radius: 20px;
+}
+.all input:nth-child(1)
+{
+width:100%;
+border:none;
+margin-bottom:5px;
+box-shadow:0 0 10px #999;
+}
+.all input:nth-child(2)
+{
+border:2px solid #f33446;
+padding:5px 10px;
+width:100%;
+box-shadow:0 0 10px #999;
+}
+
+.all button
+{
+background:transparent;
+padding:10px 20px;
+width:100%;
+border:2px solid #f33446;
+margin:10px 0;
+}
+.all button:hover
+{
+background:#f33446;
+color:#fff;
+box-shadow:0 0 10px #999;
+}
+#copiedId
+{
+color:#555;
+font-family:cursive;
+font-size:25px;
+}
+</style>
+</head>
+<body>
+
+
+<div class="all" id="all">
+<input type="color" id="nameColor" value="#abacbc">
+<input type="text" id="nameText" value="#abacbc" disabled>
+<button class="button1" id="run">RUN</button>
+<button class="button2" id="copy">COPY</button>
+<p id="copiedId"></p>
+</div>
+
+<script>
+let color=document.getElementById("nameColor");
+let name=document.getElementById("nameText");
+let run=document.getElementById("run");
+let copy=document.getElementById("copy");
+let copied=document.getElementById("copiedId");
+let all=document.getElementById("all");
+run.onclick=function(){
+	name.value=color.value;
+	document.body.style.background=color.value;
+	run.style.border=`2px solid ${color.value}`;
+	copy.style.border=`2px solid ${color.value}`;
+	name.style.border=`2px solid ${color.value}`;
+	copied.innerHTML="Running";
+	copied.style.color=color.value;
+	all.style.boxshadow=`0 0 15px ${color.value}`;
+};
+copy.onclick=function(){
+	copied.innerHTML="Copied";
+	navigator.toggle.write_text=color.value;
+};
+</script>
+
+</body>
+</html>
